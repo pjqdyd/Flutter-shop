@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
-import './pages/index_page.dart';
+import 'routes/Routes.dart';
 
 void main() => runApp(MyApp());
 
+//MyApp组件
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child:  MaterialApp(
-        title: 'Cool店',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Colors.deepOrangeAccent,
-        ),
-        home: IndexPage()
+    return MaterialApp(
+      //home: IndexPage(),
+      theme: ThemeData(
+        
       ),
+      initialRoute: "/", //初始化时加载的路由(IndexPage()页面)
+      onGenerateRoute: onGenerateRoute //调用Routes.dart中的可传参数方法
     );
   }
 }
