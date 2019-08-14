@@ -1,16 +1,9 @@
-# flutter_shop
+### Flutter_shop 使用Flutter 开发的移动端电商APP应用.
 
-A new Flutter project.
+### 开发环境:
+   [Fluter中文文档](https://flutterchina.club/get-started/install/).
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### 如何运行:
+   1. 连接好设备后(安卓模拟器), 在项目目录下运行`flutter run`即可.
+   
+   (目前项目初始化..)
