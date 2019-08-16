@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import '../pages/cart/Cart.dart';
+import '../pages/member/Member.dart';
+import '../pages/category/Categort.dart';
+import '../pages/home/Home.dart';
 import '../pages/Index.dart';
 
  //定义常量命名路由
   final routers = {
-    //'/search': (context, {arguments}) => SearchPage(arguments: arguments),
     '/': (context) => IndexPage(), //主页
+    '/home': (context, {arguments}) => HomePage(arguments: arguments),//首页
+    '/category': (context, {arguments}) => CategoryPage(arguments: arguments),//分类页
+    '/cart': (context, {arguments}) => CartPage(arguments: arguments), //购物车页
+    '/member': (context, {arguments}) => MemberPage(arguments: arguments),//会员页
   };
+
 
   //监听路由实现命名路由可传参数的方法 (固定写法,直接复制即可)
   var onGenerateRoute = (RouteSettings settings){
