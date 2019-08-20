@@ -25,9 +25,9 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Cool店"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("Cool店"),
+      // ),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
       body: this._tabBodies[this._currentIndex], //显示当前下标的组件
       bottomNavigationBar: BottomNavigationBar( //底部Tab栏
