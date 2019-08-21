@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../service/serviceMethod.dart';
+import '../../service/serviceMethod.dart'; //http请求方法
+//import 'dart:convert';            //json格式数据转换
+import 'swiper/HomeSwiper.dart';  //轮播组件
 
 //首页页面
 class HomePage extends StatefulWidget {
@@ -14,17 +16,6 @@ class _HomePageState extends State<HomePage> {
   Map arguments;
   _HomePageState({this.arguments}); //接收构造参数并赋值
 
-  String homePageContext = '还没有首页数据';
-  @override
-  void initState() { //初始化执行的方法
-    getHomePageContent().then((val){ //加载首页数据
-      setState(() {
-       homePageContext = val.toString(); 
-      });
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,8 +23,25 @@ class _HomePageState extends State<HomePage> {
          appBar: AppBar(
            title: Text("Cool店"),
          ),
-         body: SingleChildScrollView(
-           child: Text(homePageContext),
+         body: FutureBuilder( //异步渲染组件
+           future: getHomePageContent(), //调用异步方法(初始首页数据)
+           builder: (context, snapshot){
+             if(snapshot.hasData){
+               //var resData = json.decode(snapshot.data.toString()); //不用转换,默认json格式
+               var resData = snapshot.data;
+               List swiperList = resData['data']['swiperList'];
+               print(swiperList);
+               return Column(
+                 children: <Widget>[
+                   HomeSwiper(swiperDataList: swiperList,)
+                 ],
+               );
+             }else{
+               return Center(
+                 child: Text('加载中..'),
+               );
+             }
+           },
          )
        ),
     );
