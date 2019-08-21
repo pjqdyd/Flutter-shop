@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import '../../config/httpHeaders.dart';
+import '../../service/serviceMethod.dart';
 
 //首页页面
 class HomePage extends StatefulWidget {
@@ -15,7 +14,16 @@ class _HomePageState extends State<HomePage> {
   Map arguments;
   _HomePageState({this.arguments}); //接收构造参数并赋值
 
-  String text = '还没有数据';
+  String homePageContext = '还没有首页数据';
+  @override
+  void initState() { //初始化执行的方法
+    getHomePageContent().then((val){ //加载首页数据
+      setState(() {
+       homePageContext = val.toString(); 
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,40 +32,10 @@ class _HomePageState extends State<HomePage> {
          appBar: AppBar(
            title: Text("Cool店"),
          ),
-         body: Column(
-           children: <Widget>[
-             RaisedButton(
-               child: Text("请求数据"),
-               onPressed: _showData,
-             ),
-             Text(text),
-           ],
-         ),
+         body: SingleChildScrollView(
+           child: Text(homePageContext),
+         )
        ),
     );
   }
-
-  //请求数据展示
-  void _showData(){
-    print("开始请求数据");
-    getData().then((val){
-      setState(() {
-       text = val['data'].toString(); 
-      });
-    });
-  }
-
-  //定义异步请求数据的方法
-  Future getData() async{
-    try{
-      Dio dio = new Dio();
-      dio.options.headers = httpHeaders;//设置请求头
-      Response response = await dio.get('https://time.geekbang.org/serv/v1/column/newAll');
-      print(response);
-      return response.data;
-    }catch(e){
-      return print(e);
-    }
-  }
-
 }
