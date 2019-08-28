@@ -11,10 +11,9 @@ class HomeSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //初始屏幕尺寸(设计图宽度以750px标准)
-    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+
     return Container(
-      height: ScreenUtil().setHeight(333),
+      height: ScreenUtil().setHeight(300),
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemBuilder: (BuildContext context, int index){

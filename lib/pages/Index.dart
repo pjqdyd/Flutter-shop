@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'category/Categort.dart';
 import 'home/Home.dart';
 import 'cart/Cart.dart';
@@ -24,6 +26,9 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
+    //初始屏幕尺寸, 之后就可以使用了(设计图宽度以750px标准)
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+
     return Scaffold(
       // appBar: AppBar(
       //   title: Text("Cool店"),

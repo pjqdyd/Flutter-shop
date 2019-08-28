@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //去掉debug显示
-      theme: ThemeData(
-        
+      theme: ThemeData(                  //主题色
+       primaryColor: Color.fromRGBO(104, 87, 229, 1)
       ),
       //home: IndexPage(),
       initialRoute: "/", //初始化时加载的路由(IndexPage()页面)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/pages/home/navigator/HomeNavIcons.dart';
 import '../../service/serviceMethod.dart'; //http请求方法
 //import 'dart:convert';            //json格式数据转换
 import 'swiper/HomeSwiper.dart';  //轮播组件
@@ -29,11 +30,12 @@ class _HomePageState extends State<HomePage> {
              if(snapshot.hasData){
                //var resData = json.decode(snapshot.data.toString()); //不用转换,默认json格式
                var resData = snapshot.data;
-               List swiperList = resData['data']['swiperList'];
-               print(swiperList);
+               List swiperList = resData['data']['swiperList'];   //轮播数据
+               List navIconList = resData['data']['navIconList']; //导航分类图标数据
                return Column(
                  children: <Widget>[
-                   HomeSwiper(swiperDataList: swiperList,)
+                   HomeSwiper(swiperDataList: swiperList),
+                   HomeNavIcons(navIconDataList: navIconList,)
                  ],
                );
              }else{
@@ -47,3 +49,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/**
+ * 
+ */
