@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop/pages/home/navigator/HomeNavIcons.dart';
 import '../../service/serviceMethod.dart'; //http请求方法
-//import 'dart:convert';            //json格式数据转换
-import 'swiper/HomeSwiper.dart';  //轮播组件
+
+//import 'dart:convert';             //json格式数据转换
+import 'swiper/HomeSwiper.dart';     //轮播组件
+import 'navigator/HomeNavIcons.dart';//导航图标组件
 
 //首页页面
 class HomePage extends StatefulWidget {
