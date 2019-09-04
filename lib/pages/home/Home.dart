@@ -4,6 +4,7 @@ import '../../service/serviceMethod.dart'; //http请求方法
 //import 'dart:convert';             //json格式数据转换
 import 'swiper/HomeSwiper.dart';     //轮播组件
 import 'navigator/HomeNavIcons.dart';//导航图标组件
+import 'adbanner/HomeAdBanner.dart'; //广告图片组件
 
 //首页页面
 class HomePage extends StatefulWidget {
@@ -33,10 +34,13 @@ class _HomePageState extends State<HomePage> {
                var resData = snapshot.data;
                List swiperList = resData['data']['swiperList'];   //轮播数据
                List navIconList = resData['data']['navIconList']; //导航分类图标数据
+               String adImageUrl = resData['data']['adImageUrl']; //广告图标url
+
                return Column(
                  children: <Widget>[
                    HomeSwiper(swiperDataList: swiperList),
-                   HomeNavIcons(navIconDataList: navIconList,)
+                   HomeNavIcons(navIconDataList: navIconList),
+                   HomeAdBanner(adImageUrl: adImageUrl)
                  ],
                );
              }else{
