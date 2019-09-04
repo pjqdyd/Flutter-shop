@@ -5,11 +5,12 @@ import '../../service/serviceMethod.dart'; //http请求方法
 import 'swiper/HomeSwiper.dart';     //轮播组件
 import 'navigator/HomeNavIcons.dart';//导航图标组件
 import 'adbanner/HomeAdBanner.dart'; //广告图片组件
+import 'recommend/HomeRecommend.dart'; //推荐商品组件
 
 //首页页面
 class HomePage extends StatefulWidget {
 
-  Map arguments; //定义接收的参数map集合
+  Map arguments; //定义接收的路由跳转参数map集合
   HomePage({this.arguments});
   _HomePageState createState() => _HomePageState(arguments: this.arguments);
 
@@ -36,13 +37,17 @@ class _HomePageState extends State<HomePage> {
                List navIconList = resData['data']['navIconList']; //导航分类图标数据
                String adImageUrl = resData['data']['adImageUrl']; //广告图标url 
                String adJumpAddress = resData['data']['adJumpAddress']; //点击广告跳转的地址
+               List recommendList = resData['data']['recommendList']; //推荐商品数据
 
-               return Column(
-                 children: <Widget>[
-                   HomeSwiper(swiperDataList: swiperList),
-                   HomeNavIcons(navIconDataList: navIconList),
-                   HomeAdBanner(adImageUrl: adImageUrl, jumpAddress: adJumpAddress)
-                 ],
+               return SingleChildScrollView(
+                 child: Column(
+                  children: <Widget>[
+                    HomeSwiper(swiperDataList: swiperList),
+                    HomeNavIcons(navIconDataList: navIconList),
+                    HomeAdBanner(adImageUrl: adImageUrl, jumpAddress: adJumpAddress),
+                    HomeRecommend(recommendDataList: recommendList)
+                  ],
+                ),
                );
              }else{
                return Center(
