@@ -34,13 +34,14 @@ class _HomePageState extends State<HomePage> {
                var resData = snapshot.data;
                List swiperList = resData['data']['swiperList'];   //轮播数据
                List navIconList = resData['data']['navIconList']; //导航分类图标数据
-               String adImageUrl = resData['data']['adImageUrl']; //广告图标url
+               String adImageUrl = resData['data']['adImageUrl']; //广告图标url 
+               String adJumpAddress = resData['data']['adJumpAddress']; //点击广告跳转的地址
 
                return Column(
                  children: <Widget>[
                    HomeSwiper(swiperDataList: swiperList),
                    HomeNavIcons(navIconDataList: navIconList),
-                   HomeAdBanner(adImageUrl: adImageUrl)
+                   HomeAdBanner(adImageUrl: adImageUrl, jumpAddress: adJumpAddress)
                  ],
                );
              }else{
