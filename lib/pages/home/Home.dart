@@ -56,6 +56,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                     HomeRecommend(recommendDataList: recommendList),
                     HomeFloorTitle(ftImageUrl: ftImageUrl),
                     HomeFloorContent(floorProductDataList: floorProductList),
+                    HomeFloorTitle(ftImageUrl: ftImageUrl),
+                    HomeFloorContent(floorProductDataList: floorProductList),
                   ],
                 ),
                );
