@@ -17,7 +17,7 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   
   int _currentIndex = 0; //当前底部Tab栏下标
-  final List _tabBodies = [ //对应底部栏的组件集合
+  final List<Widget> _tabBodies = [ //对应底部栏的组件集合
     HomePage(),
     CategoryPage(),
     CartPage(),
@@ -34,7 +34,10 @@ class _IndexPageState extends State<IndexPage> {
       //   title: Text("Cool店"),
       // ),
       backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-      body: this._tabBodies[this._currentIndex], //显示当前下标的组件
+      body: IndexedStack(
+        index: this._currentIndex,
+        children: this._tabBodies, //显示当前下标的组件(保活),
+      ),
       bottomNavigationBar: BottomNavigationBar( //底部Tab栏
         iconSize: 25.0,
         currentIndex: this._currentIndex,

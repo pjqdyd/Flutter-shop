@@ -16,9 +16,12 @@ class HomePage extends StatefulWidget {
 
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   Map arguments;
   _HomePageState({this.arguments}); //接收构造参数并赋值
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
