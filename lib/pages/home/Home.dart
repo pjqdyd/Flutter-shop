@@ -6,6 +6,9 @@ import 'swiper/HomeSwiper.dart';     //轮播组件
 import 'navigator/HomeNavIcons.dart';//导航图标组件
 import 'adbanner/HomeAdBanner.dart'; //广告图片组件
 import 'recommend/HomeRecommend.dart'; //推荐商品组件
+import 'floor_title/HomeFloorTitle.dart'; //商品楼层标题组件
+import 'floor_content/HomeFloorContent.dart'; //商品楼层内容组件
+
 
 //首页页面
 class HomePage extends StatefulWidget {
@@ -40,7 +43,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                List navIconList = resData['data']['navIconList']; //导航分类图标数据
                String adImageUrl = resData['data']['adImageUrl']; //广告图标url 
                String adJumpAddress = resData['data']['adJumpAddress']; //点击广告跳转的地址
-               List recommendList = resData['data']['recommendList']; //推荐商品数据
+               List recommendList = resData['data']['recommendList'];   //推荐商品数据
+               String ftImageUrl = resData['data']['ftImageUrl'];       //商品楼层标题图片地址
+               List<Map> floorProductList = (resData['data']['floorProductList'] as List).cast(); //商品楼层商品数据
 
                return SingleChildScrollView(
                  child: Column(
@@ -48,7 +53,9 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                     HomeSwiper(swiperDataList: swiperList),
                     HomeNavIcons(navIconDataList: navIconList),
                     HomeAdBanner(adImageUrl: adImageUrl, jumpAddress: adJumpAddress),
-                    HomeRecommend(recommendDataList: recommendList)
+                    HomeRecommend(recommendDataList: recommendList),
+                    HomeFloorTitle(ftImageUrl: ftImageUrl),
+                    HomeFloorContent(floorProductDataList: floorProductList),
                   ],
                 ),
                );
