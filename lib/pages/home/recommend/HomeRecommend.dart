@@ -11,7 +11,7 @@ class HomeRecommend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(320),
+      height: ScreenUtil().setHeight(270),
       margin: EdgeInsets.only(top: 5),
       child: Column(
         children: <Widget>[
@@ -26,7 +26,7 @@ class HomeRecommend extends StatelessWidget {
   Widget _titleWidget(){
     return Container(
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.fromLTRB(2, 0, 0, 5),
+      padding: EdgeInsets.fromLTRB(7, 0, 0, 5),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border(bottom: BorderSide(width: 1, color: Colors.black12),),
@@ -39,7 +39,7 @@ class HomeRecommend extends StatelessWidget {
   Widget _productItem(index){
     return InkWell(
       child: Container(
-        height: ScreenUtil().setHeight(260),
+        height: ScreenUtil().setHeight(210),
         width: ScreenUtil().setWidth(250),
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -48,8 +48,12 @@ class HomeRecommend extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            Image.network(this.recommendDataList[index]['image']), //商品图片
-            Text("¥ ${recommendDataList[index]['price']}"),        //价格
+            Image.network( //商品图片
+              this.recommendDataList[index]['image'],
+              height:  ScreenUtil().setHeight(140),
+              fit: BoxFit.fill,
+            ), 
+            Text("¥ ${recommendDataList[index]['price']}",),        //价格
           ],
         ),
       ),
@@ -60,7 +64,7 @@ class HomeRecommend extends StatelessWidget {
   //横向商品列表
   Widget _productListX(){
     return Container(
-      height: ScreenUtil().setHeight(260),
+      height: ScreenUtil().setHeight(210),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: recommendDataList.length,
