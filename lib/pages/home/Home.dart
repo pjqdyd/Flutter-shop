@@ -22,11 +22,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
-  Map arguments;
+
+  int page = 1; //热门商品的页数
+  List<Map> hotProductList = []; //热门商品数据集合
+
+  Map arguments; //路由跳转参数map集合
   _HomePageState({this.arguments}); //接收构造参数并赋值
 
   @override
   bool get wantKeepAlive => true;
+
+  @override
+  void initState() { 
+    super.initState();
+    this._getHotProduct();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +69,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                     HomeFloorTitle(ftImageUrl: ftImageUrl),
                     HomeFloorContent(floorProductDataList: floorProductList),
                     HomeHotTitle(),
-                    HomeHotProduct(),
+                    HomeHotProduct(hotProductList),
                   ],
                 ),
                );
@@ -73,4 +83,17 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
        ),
     );
   }
+
+  //定义获取热门商品数据的方法
+  void _getHotProduct(){
+    getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){
+      //新的商品数据
+      List<Map> newHotProductList = (data['data']['hotProductDataList'] as List).cast();
+      setState(() {
+       this.hotProductList.addAll(newHotProductList); //添加拼接一页商品数据 
+       this.page++;
+      });
+    });
+  }
+
 }
