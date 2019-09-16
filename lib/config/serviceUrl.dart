@@ -4,4 +4,5 @@ const baseUrl = 'https://www.fastmock.site/mock/bc14b21e8480ac4561695de1d2767d67
 
 const servicePath = {
   'homePageContent': baseUrl + '/homePage/content', //商店首页信息
+  'homePageHot': baseUrl + '/homePage/hot',         //首页热门商品
 };
