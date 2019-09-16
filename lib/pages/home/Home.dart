@@ -8,6 +8,7 @@ import 'adbanner/HomeAdBanner.dart'; //广告图片组件
 import 'recommend/HomeRecommend.dart'; //推荐商品组件
 import 'floor_title/HomeFloorTitle.dart'; //商品楼层标题组件
 import 'floor_content/HomeFloorContent.dart'; //商品楼层内容组件
+import 'hot_title/HomeHotTitle.dart';      //热门商品标题组件
 import 'hot_products/HomeHotProduct.dart'; //热门商品组件
 
 
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                     HomeRecommend(recommendDataList: recommendList),
                     HomeFloorTitle(ftImageUrl: ftImageUrl),
                     HomeFloorContent(floorProductDataList: floorProductList),
+                    HomeHotTitle(),
                     HomeHotProduct(),
                   ],
                 ),
@@ -72,7 +74,3 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
     );
   }
 }
-
-/**
- * 
- */
