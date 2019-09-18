@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';   //上拉加载下拉刷新插件
+import 'package:flutter_easyrefresh/material_header.dart'; //下拉刷新头部
+import 'package:flutter_easyrefresh/bezier_bounce_footer.dart'; //上拉加载底部
+
 import '../../service/serviceMethod.dart'; //http请求方法
 
 //import 'dart:convert';             //json格式数据转换
@@ -35,7 +39,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   @override
   void initState() { 
     super.initState();
-    this._getHotProduct();
   }
 
   @override
@@ -59,8 +62,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                String ftImageUrl = resData['data']['ftImageUrl'];       //商品楼层标题图片地址
                List<Map> floorProductList = (resData['data']['floorProductList'] as List).cast(); //商品楼层商品数据
 
-               return SingleChildScrollView(
-                 child: Column(
+               return EasyRefresh(
+                 header: MaterialHeader(),
+                 footer: BezierBounceFooter(),
+                 child: ListView(
                   children: <Widget>[
                     HomeSwiper(swiperDataList: swiperList),
                     HomeNavIcons(navIconDataList: navIconList),
@@ -72,6 +77,11 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
                     HomeHotProduct(hotProductList),
                   ],
                 ),
+                onRefresh: () async {}, //下拉刷新
+                onLoad: () async {      //上拉加载
+                  print("下拉加载中..");
+                  this._getHotProduct();  //加载一页数据
+                },
                );
              }else{
                return Center(
@@ -85,8 +95,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   }
 
   //定义获取热门商品数据的方法
-  void _getHotProduct(){
-    getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){
+  void _getHotProduct() async{
+      await getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){
       //新的商品数据
       List<Map> newHotProductList = (data['data']['hotProductDataList'] as List).cast();
       setState(() {

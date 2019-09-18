@@ -17,7 +17,7 @@ class _HomeHotProductState extends State<HomeHotProduct> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: _wrapHotProducts(), //热门商品流式布局组件
+       child: _wrapHotProducts(), //热门商品网格布局组件
     );
   }
 
@@ -35,8 +35,13 @@ class _HomeHotProductState extends State<HomeHotProduct> {
             margin: EdgeInsets.only(bottom: 3),
             child: Column(
               children: <Widget>[
-                Image.network(val['image'], width: ScreenUtil().setWidth(370),),
-                Container(
+                Image.network( //商品图片
+                  val['image'],
+                  width: ScreenUtil().setWidth(370),  
+                  height: ScreenUtil().setWidth(380),
+                  fit: BoxFit.cover,
+                ),
+                Container(  //商品名称
                   alignment: Alignment.centerLeft,
                   child: Text(
                       val['name'],
@@ -45,7 +50,7 @@ class _HomeHotProductState extends State<HomeHotProduct> {
                       style: TextStyle(color: Colors.black87, fontSize: ScreenUtil().setSp(26),),
                     ),
                 ),
-                Row(
+                Row( //商品价格
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text('￥${val['newPrice']}'),
@@ -61,11 +66,13 @@ class _HomeHotProductState extends State<HomeHotProduct> {
         );
       }).toList();
 
-      //返回流式布局组件
+      //返回网格布局组件
       return Wrap(
         spacing: 2,
+        alignment: WrapAlignment.spaceEvenly,
         children: hotProductWidgetList,
       );
+
     }else{
       return Text('没有数据');
     }

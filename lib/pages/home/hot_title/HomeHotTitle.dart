@@ -8,18 +8,17 @@ class HomeHotTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ScreenUtil().setWidth(190),
       margin: EdgeInsets.only(top: 5),
       alignment: Alignment.center,
       color: Colors.transparent,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.asset(
             'images/icon/hot.png', 
             width: 28,
             height: 28,),
-          Text("热门商品")
+          Text("  热门商品")
         ],
       ),
     );
