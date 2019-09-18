@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
                return EasyRefresh(
                  header: MaterialHeader(),
-                 footer: BezierBounceFooter(),
+                 footer: BezierBounceFooter(backgroundColor: Color(0xFF8C7BFD),), //16 argb进制色 #FF8C7BFD
                  child: ListView(
                   children: <Widget>[
                     HomeSwiper(swiperDataList: swiperList),
