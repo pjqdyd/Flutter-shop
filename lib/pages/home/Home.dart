@@ -3,7 +3,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';   //上拉加载下拉�
 import 'package:flutter_easyrefresh/material_header.dart'; //下拉刷新头部
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart'; //上拉加载底部
 
-import '../../service/serviceMethod.dart'; //http请求方法
+import '../../service/serviceMethod.dart' as HttpMethod; //http请求方法
 
 //import 'dart:convert';             //json格式数据转换
 import 'swiper/HomeSwiper.dart';     //轮播组件
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
            title: Text("Cool店"),
          ),
          body: FutureBuilder( //异步渲染组件
-           future: getHomePageContent(), //调用异步方法(初始首页数据)
+           future: HttpMethod.getHomePageContent(), //调用异步方法(初始首页数据)
            builder: (context, snapshot){
              if(snapshot.hasData){
                //var resData = json.decode(snapshot.data.toString()); //不用转换,默认json格式
@@ -96,7 +96,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
   //定义获取热门商品数据的方法
   void _getHotProduct() async{
-      await getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){
+      if(this.page > 5){ //没有数据了
+        return null;
+      }
+      await HttpMethod.getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){
       //新的商品数据
       List<Map> newHotProductList = (data['data']['hotProductDataList'] as List).cast();
       setState(() {
