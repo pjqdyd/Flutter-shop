@@ -39,3 +39,10 @@ Future getHomeHotProduct({params="{}"}) async{
   print('开始获取首页热门商品数据..');
   return await sendPostRequest(servicePath['homePageHot'], params: params);
 }
+
+//获取分类页数据内容的方法
+Future getCategoryPageContent({params="{}"}) async{
+  print('开始获取分类页数据..');
+  return await sendPostRequest(servicePath['categoryPageContent'], params: params);
+}
+

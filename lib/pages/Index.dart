@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'category/Categort.dart';
+import 'category/Category.dart';
 import 'home/Home.dart';
 import 'cart/Cart.dart';
 import 'member/Member.dart';
