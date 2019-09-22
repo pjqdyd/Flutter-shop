@@ -1,5 +1,5 @@
 
-//分类页的数据模型
+//分类的数据模型
 class CategoryDataModle {
   String mallCategoryId;   //分类id
   String mallCategoryName; //分类名称
