@@ -20,7 +20,7 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() { 
     super.initState();
-    _getCategoryData();
+    _getCategoryData(); //初始加载分类页数据
   }
 
   @override
@@ -28,14 +28,12 @@ class _CategoryPageState extends State<CategoryPage> {
     return Container(
         child: Scaffold(
         appBar: AppBar(title: Text("商品分类"),),
-        body: Container(
-          child: Row(
+        body: Row(
             children: <Widget>[
               LeftCategoryNav(categoryModleList: this._categoryModleList,),
             ],
           ),
         ),
-      ),
     );
   }
 
