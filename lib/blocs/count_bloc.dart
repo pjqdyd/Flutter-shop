@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 
-class CountBLoC {
+class CountBLoC{
   int _count = 0;
   var _subject = BehaviorSubject<int>();
 
