@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/pages/cart/test/Test.dart';
 
 class CartPage extends StatelessWidget {
 
@@ -8,9 +9,11 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Center(
-        child: Text("购物车"),
+        //child: Text("购物车"),
+        child: Test(),
       ),
     );
   }
