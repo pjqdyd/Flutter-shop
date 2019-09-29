@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../service/serviceMethod.dart' as HttpMethod; //Http请求方法
 import '../../model/CategoryDataModel.dart';            //分类的数据模型
 
-import 'left_category_nav/LeftCategoryNav.dart';  //左边分类导航组件
+import 'left_category_nav/LeftCategoryNav.dart';   //左边分类导航组件
+import 'right_category_nav/RightCategoryNav.dart'; //右侧顶部子分类导航
+
 
 //分类页面
 class CategoryPage extends StatefulWidget {
@@ -31,6 +33,13 @@ class _CategoryPageState extends State<CategoryPage> {
         body: Row(
             children: <Widget>[
               LeftCategoryNav(categoryModleList: this._categoryModleList,),
+
+              Column(
+                children: <Widget>[
+                  RightCategoryNav(),
+                ],
+              ),
+
             ],
           ),
         ),
