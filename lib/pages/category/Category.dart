@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:provide/provide.dart'; //状态管理部件
+import '../../provider/SubCategoryProd.dart';
+
 import '../../service/serviceMethod.dart' as HttpMethod; //Http请求方法
 import '../../model/CategoryDataModel.dart';            //分类的数据模型
 
@@ -56,6 +59,8 @@ class _CategoryPageState extends State<CategoryPage> {
           this._categoryModleList.add(new CategoryDataModle.fromJson(item)); 
         });
       });
+      //把初始的第一个子分类数据,添加到状态管理中
+      Provide.value<SubCategoryProd>(context).setSubCategoryList(this._categoryModleList[0].subCategoryDataList);
     });
   }
 
