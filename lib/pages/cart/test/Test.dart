@@ -8,7 +8,7 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final bloc = BlocProvider.of(context); //获取状态处理对象
+    final bloc = BlocProvider.ofTest(context); //获取状态处理对象
 
     return Column(
       children: <Widget>[
