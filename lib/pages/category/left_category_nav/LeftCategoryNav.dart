@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../model/CategoryDataModel.dart';
 
+import 'package:provide/provide.dart';      //引入使用状态管理
+import '../../../provider/SubCategoryProd.dart';
+
 
 // 左侧分类导航组件
 class LeftCategoryNav extends StatefulWidget {
@@ -24,16 +27,21 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
        child: ListView.builder( //分类列表
          itemCount: categoryModleList.length,
          itemBuilder: (context, index){
-           return _itemBox(index);
+           return _itemBox(index, context);
          },
        ),
     );
   }
 
   //每一项分类盒子
-  Widget _itemBox(int index){
+  Widget _itemBox(int index, BuildContext context){
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        //获取当前点击的子分类集合
+        var subCategoryList = categoryModleList[index].subCategoryDataList;
+        //赋值给状态管理
+        Provide.value<SubCategoryProd>(context).setSubCategoryList(subCategoryList);
+      },
       child: Container(
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10, top: 20),
