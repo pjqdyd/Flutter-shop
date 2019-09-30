@@ -9,7 +9,7 @@ class SubCategoryProd with ChangeNotifier {
   List<SubCategoryData> subCategoryList = [];
 
   //设置数据的方法
-  void setSubCategoryList(List list){
+  void setSubCategoryList(List<SubCategoryData> list){
     subCategoryList = list;
     notifyListeners();
   }

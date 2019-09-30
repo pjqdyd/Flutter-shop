@@ -52,7 +52,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10, top: 20),
         decoration: BoxDecoration(
-          color: isActive ? Colors.black12 : Colors.white,
+          color: isActive ? Color.fromRGBO(104, 87, 229, 0.1) : Colors.white,
           border: Border(bottom: BorderSide(width: 1, color: Colors.black12),),
         ),
         child: Text(this.categoryModleList[index].mallCategoryName), //分类名称

@@ -43,7 +43,7 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
     return InkWell(
       onTap: (){},
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+        padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
         child: Text(
           item.mallSubName,
           style: TextStyle(fontSize: ScreenUtil().setSp(28),),
