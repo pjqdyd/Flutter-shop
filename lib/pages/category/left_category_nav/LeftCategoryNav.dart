@@ -14,6 +14,7 @@ class LeftCategoryNav extends StatefulWidget {
 }
 
 class _LeftCategoryNavState extends State<LeftCategoryNav> {
+   var currentIndex = 0;
    List<CategoryDataModle> categoryModleList;
   _LeftCategoryNavState(this.categoryModleList);
 
@@ -35,8 +36,13 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
 
   //每一项分类盒子
   Widget _itemBox(int index, BuildContext context){
+    bool isActive = false;
+    isActive = (index == currentIndex) ? true: false;
     return InkWell(
       onTap: (){
+        setState(() {
+         currentIndex = index; 
+        });
         //获取当前点击的子分类集合
         var subCategoryList = categoryModleList[index].subCategoryDataList;
         //赋值给状态管理
@@ -46,7 +52,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
         height: ScreenUtil().setHeight(100),
         padding: EdgeInsets.only(left: 10, top: 20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: isActive ? Colors.black12 : Colors.white,
           border: Border(bottom: BorderSide(width: 1, color: Colors.black12),),
         ),
         child: Text(this.categoryModleList[index].mallCategoryName), //分类名称
