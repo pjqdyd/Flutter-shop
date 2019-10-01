@@ -46,3 +46,9 @@ Future getCategoryPageContent({params="{}"}) async{
   return await sendPostRequest(servicePath['categoryPageContent'], params: params);
 }
 
+//获取分类页商品列表的方法
+Future getCategoryPageProducts({params="{}"}) async{
+  print('开始获取分类页商品列表数据..');
+  return await sendPostRequest(servicePath['categoryPageProducts'], params: params);
+}
+

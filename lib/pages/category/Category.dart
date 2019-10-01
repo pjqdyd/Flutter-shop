@@ -8,6 +8,8 @@ import '../../model/CategoryDataModel.dart';            //分类的数据模型
 
 import 'left_category_nav/LeftCategoryNav.dart';   //左边分类导航组件
 import 'right_category_nav/RightCategoryNav.dart'; //右侧顶部子分类导航
+import 'category_products/CategoryProducts.dart';  //分类页商品列表组件
+
 
 
 //分类页面
@@ -40,6 +42,7 @@ class _CategoryPageState extends State<CategoryPage> {
               Column(
                 children: <Widget>[
                   RightCategoryNav(),
+                  CategoryProducts(),
                 ],
               ),
 
