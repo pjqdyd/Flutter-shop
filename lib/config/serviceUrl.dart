@@ -6,5 +6,5 @@ const servicePath = {
   'homePageContent': baseUrl + '/homePage/content', //商店首页信息
   'homePageHot': baseUrl + '/homePage/hot',         //首页热门商品
   'categoryPageContent': baseUrl + '/categoryPage/content',  //分类页信息
-  'categotyPageProducts': baseUrl + '/categoryPage/products' //分类页的商品列表
+  'categoryPageProducts': baseUrl + '/categoryPage/products' //分类页的商品列表
 };
