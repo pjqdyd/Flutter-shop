@@ -57,7 +57,7 @@ class _LeftCategoryNavState extends State<LeftCategoryNav> {
         var subCategoryList = categoryModleList[index].subCategoryDataList; //获取当前点击的子分类集合
         var categoryId = categoryModleList[index].mallCategoryId;           //获取当前点击分类的id
         //赋值给状态管理
-        Provide.value<SubCategoryProd>(context).setSubCategoryList(subCategoryList);
+        Provide.value<SubCategoryProd>(context).setSubCategoryList(subCategoryList, categoryId);
         //获取对应商品的列表数据
         _getProductList(categoryId: categoryId);
       },

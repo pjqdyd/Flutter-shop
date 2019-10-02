@@ -63,7 +63,10 @@ class _CategoryPageState extends State<CategoryPage> {
         });
       });
       //把初始的第一个子分类数据,添加到状态管理中
-      Provide.value<SubCategoryProd>(context).setSubCategoryList(this._categoryModleList[0].subCategoryDataList);
+      Provide.value<SubCategoryProd>(context).setSubCategoryList(
+        this._categoryModleList[0].subCategoryDataList, 
+        this._categoryModleList[0].mallCategoryId, 
+        );
     });
   }
 

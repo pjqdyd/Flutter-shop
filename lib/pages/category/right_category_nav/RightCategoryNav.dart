@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../model/CategoryDataModel.dart';
 
+import '../../../service/serviceMethod.dart' as HttpMethod;
+import '../../../model/ProductDataModel.dart';  //商品数据模型
+
 import 'package:provide/provide.dart'; //引入状态管理组件
 import '../../../provider/SubCategoryProd.dart'; 
+import '../../../provider/ProductListProd.dart';
 
 //右侧顶部的子分类导航组件
 class RightCategoryNav extends StatefulWidget {
@@ -47,6 +51,7 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
       onTap: (){
         //点击后更改激活的下标为当前下标
         Provide.value<SubCategoryProd>(context).setSubCategoryIndex(index);
+        _getProductList(item.mallSubId); //获取当前子分类的商品数据
       },
       child: Container(
         padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
@@ -58,6 +63,25 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
         ),
       ),
     );
+  }
+
+  //定义获取商品数据, 并保存数据到状态管理的方法
+  void _getProductList(String subCategoryId) async{
+    var param = {
+      'categoryId': Provide.value<SubCategoryProd>(context).categoryId,
+      'categorySubId': subCategoryId,
+      'page': 1
+    };
+    await HttpMethod.getCategoryPageProducts(params: param).then((resData){
+       List<dynamic> productList = resData['data']; //获取商品列表集合
+       List<ProductDataModel> list = [];
+      //将json数据商品还原成商品Model对象, 并存入list集合中
+      productList.forEach((item){
+        list.add(new ProductDataModel.fromJson(item));
+      });
+      Provide.value<ProductListProd>(context).setProductList(list); //存数据到状态管理的
+    });
+
   }
 
 }
