@@ -20,17 +20,18 @@ class _CategoryProductsState extends State<CategoryProducts> {
     return Provide<ProductListProd>(
       builder: (context, child, productListProd){
         var productList = productListProd.productList;  //获取状态管理的商品列表数据
-        return Container(
-          width: ScreenUtil().setWidth(570),
-          height: ScreenUtil().setHeight(960),
-          child: ListView.builder(
-            itemCount: productList.length,
-            itemBuilder: (context, index){
-              return InkWell(
-                child: _itemBox(productList[index]),
-                onTap: (){},
-              );
-            },
+        return Expanded(
+          child: Container(
+            width: ScreenUtil().setWidth(570),
+            child: ListView.builder(
+              itemCount: productList.length,
+              itemBuilder: (context, index){
+                return InkWell(
+                  child: _itemBox(productList[index]),
+                  onTap: (){},
+                );
+              },
+            ),
           ),
         );
       },
