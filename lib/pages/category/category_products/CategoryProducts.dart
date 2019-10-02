@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../service/serviceMethod.dart' as HttpMethod;
+import 'package:provide/provide.dart';   //引入使用状态管理
+import '../../../provider/ProductListProd.dart';
 
 import '../../../model/ProductDataModel.dart';  //商品数据模型
 
@@ -14,43 +15,40 @@ class CategoryProducts extends StatefulWidget {
 
 class _CategoryProductsState extends State<CategoryProducts> {
 
-  List<ProductDataModel> productModelList = []; //定义商品模型对象集合
-
-  @override
-  void initState() { 
-    super.initState();
-    _getProductList();
-  }
-  
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: ScreenUtil().setWidth(570),
-      height: ScreenUtil().setHeight(960),
-      child: ListView.builder(
-        itemCount: productModelList.length,
-        itemBuilder: (context, index){
-          return InkWell(
-            child: _itemBox(index),
-            onTap: (){},
-          );
-        },
-      ),
+    return Provide<ProductListProd>(
+      builder: (context, child, productListProd){
+        var productList = productListProd.productList;  //获取状态管理的商品列表数据
+        return Container(
+          width: ScreenUtil().setWidth(570),
+          height: ScreenUtil().setHeight(960),
+          child: ListView.builder(
+            itemCount: productList.length,
+            itemBuilder: (context, index){
+              return InkWell(
+                child: _itemBox(productList[index]),
+                onTap: (){},
+              );
+            },
+          ),
+        );
+      },
     );
   }
 
   //定义返回每个商品盒子的方法
-  Widget _itemBox(int index){
+  Widget _itemBox(ProductDataModel product){
     return ListTile(
-      leading: Image.network(productModelList[index].image),
+      leading: Image.network(product.image),
       title: Text(
-        productModelList[index].goodsName,
+        product.goodsName,
         style: TextStyle(fontSize: ScreenUtil().setSp(32),),
       ),
       subtitle: Row(
         children: <Widget>[
           Text(
-            '价格: ￥${productModelList[index].presentPrice}',
+            '价格: ￥${product.presentPrice}',
             style: TextStyle(
               color: Color.fromRGBO(104, 87, 229, 0.8),
               fontSize: ScreenUtil().setSp(30),
@@ -58,7 +56,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
           ),
           SizedBox(width: 20,),
           Text(
-            '￥${productModelList[index].oriPrice}',
+            '￥${product.oriPrice}',
             style: TextStyle(
               color: Colors.black26,
               decoration: TextDecoration.lineThrough,
@@ -69,22 +67,4 @@ class _CategoryProductsState extends State<CategoryProducts> {
     );
   }
 
-  //定义获取商品数据的方法
-  void _getProductList() async{
-    var param = {
-      'categoryId': '001',
-      'categorySubId': '001',
-      'page': 1
-    };
-    await HttpMethod.getCategoryPageProducts(params: param).then((resData){
-       List<dynamic> productList = resData['data']; //获取商品列表集合
-      //将json数据商品还原成商品Model对象, 并存入productModelList集合中
-      productList.forEach((item){
-        setState(() {
-         this.productModelList.add(new ProductDataModel.fromJson(item));
-        });
-      });
-    });
-
-  }
 }
