@@ -30,7 +30,7 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
             scrollDirection: Axis.horizontal,
             itemCount: subCateList.length,
             itemBuilder: (context, index){
-              return _itemBox(subCateList[index]);
+              return _itemBox(subCateList[index], index);
             },
           ),
         );
@@ -38,15 +38,23 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
     );
   }
 
-  //每个分类盒子
-  Widget _itemBox(SubCategoryData item){
+  //每个分类盒子, index是当前分类的下标
+  Widget _itemBox(SubCategoryData item, int index){
+    bool isActive = false;
+    int activeIndex = Provide.value<SubCategoryProd>(context).subCategoryIndex;
+    isActive = (index  == activeIndex) ? true : false;
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        //点击后更改激活的下标为当前下标
+        Provide.value<SubCategoryProd>(context).setSubCategoryIndex(index);
+      },
       child: Container(
         padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
         child: Text(
           item.mallSubName,
-          style: TextStyle(fontSize: ScreenUtil().setSp(28),),
+          style: TextStyle(
+            fontSize: ScreenUtil().setSp(28), 
+            color: isActive ? Color.fromRGBO(104, 87, 229, 1) : Colors.black),
         ),
       ),
     );
