@@ -5,9 +5,11 @@ import '../model/CategoryDataModel.dart';
 //子分类的状态管理对象(提供者部件)
 class SubCategoryProd with ChangeNotifier {
   
+  //公用数据
   List<SubCategoryData> subCategoryList = []; //子分类的数据
   int subCategoryIndex = 0;                   //当前激活子的分类的下标
   String categoryId = "0001";                 //当前左边分类的id
+  String subCategoryId = "01";                //当前右边子分类的id
 
   //设置数据的方法
   // void setSubCategoryList(List<SubCategoryData> list){
@@ -32,8 +34,9 @@ class SubCategoryProd with ChangeNotifier {
   }
 
   //设置激活子分类的方法
-  void setSubCategoryIndex(int index){
+  void setSubCategoryIndex(int index, String subId){
     subCategoryIndex = index;
+    subCategoryId = subId;
     notifyListeners();
   }
 

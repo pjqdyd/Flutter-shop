@@ -49,8 +49,8 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
     isActive = (index  == activeIndex) ? true : false;
     return InkWell(
       onTap: (){
-        //点击后更改激活的下标为当前下标
-        Provide.value<SubCategoryProd>(context).setSubCategoryIndex(index);
+        //点击后更改激活的下标为当前下标, 保存下标和子分类
+        Provide.value<SubCategoryProd>(context).setSubCategoryIndex(index, item.mallSubId);
         _getProductList(item.mallSubId); //获取当前子分类的商品数据
       },
       child: Container(
@@ -79,6 +79,7 @@ class _RightCategoryNavState extends State<RightCategoryNav> {
       productList.forEach((item){
         list.add(new ProductDataModel.fromJson(item));
       });
+      if(list == null){ list = []; }
       Provide.value<ProductListProd>(context).setProductList(list); //存数据到状态管理的
     });
 
