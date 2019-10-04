@@ -13,4 +13,10 @@ class ProductListProd with ChangeNotifier{
     notifyListeners();
   }
 
+  //添加数据的方法
+  void setAddProductList(List<ProductDataModel> list){
+    this.productList.addAll(list);
+    notifyListeners();
+  }
+
 }
