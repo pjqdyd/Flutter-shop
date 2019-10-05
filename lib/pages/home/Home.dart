@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';   //上拉加载下拉刷新插件
 import 'package:flutter_easyrefresh/material_header.dart'; //下拉刷新头部
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart'; //上拉加载底部
+import 'package:fluttertoast/fluttertoast.dart';               //Toast通知提示插件
+
 
 import '../../service/serviceMethod.dart' as HttpMethod; //http请求方法
 
@@ -96,7 +98,15 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
   //定义获取热门商品数据的方法
   void _getHotProduct() async{
-      if(this.page > 5){ //没有数据了
+      if(this.page > 3){ //没有数据了
+          Fluttertoast.showToast(
+          msg: "没有数据了",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
+          textColor: Colors.white,
+          fontSize: 16,
+        );
         return null;
       }
       await HttpMethod.getHomeHotProduct(params: {'page': this.page, 'size': 5}).then((data){

@@ -4,6 +4,7 @@ import '../pages/member/Member.dart';
 import '../pages/category/Category.dart';
 import '../pages/home/Home.dart';
 import '../pages/Index.dart';
+import '../pages/details/DetailsPage.dart';
 
  //定义常量命名路由
   final routers = {
@@ -12,6 +13,7 @@ import '../pages/Index.dart';
     '/category': (context, {arguments}) => CategoryPage(arguments: arguments),//分类页
     '/cart': (context, {arguments}) => CartPage(arguments: arguments), //购物车页
     '/member': (context, {arguments}) => MemberPage(arguments: arguments),//会员页
+    '/details': (context, {arguments}) => DetailsPage(arguments: arguments),//商品详情页
   };
 
 

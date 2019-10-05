@@ -27,7 +27,9 @@ class _HomeHotProductState extends State<HomeHotProduct> {
       //将数组收集为组件
       List<Widget> hotProductWidgetList = hotProductList.map((val){
         return InkWell(
-          onTap: (){},
+          onTap: (){
+            Navigator.pushNamed(context, "/details", arguments: {'productId': "${val['id']}"});
+          },
           child: Container(
             width: ScreenUtil().setWidth(372),
             color: Colors.white24,
