@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../service/serviceMethod.dart' as HttpMethod;
 
@@ -84,7 +85,17 @@ class _CategoryProductsState extends State<CategoryProducts> {
   //定义获取商品数据, 并保存数据到状态管理的方法
   void _getProductList() async{
     var provide = Provide.value<SubCategoryProd>(context); //从状态管理中获取数据
-    if(provide.page > 5){return null;} //没有数据了
+    if(provide.page > 3){//没有数据了
+      Fluttertoast.showToast(
+        msg: "没有数据了",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
+        textColor: Colors.white,
+        fontSize: 16,
+      );
+      return null;
+    }
     var param = {
       'categoryId': provide.categoryId,
       'categorySubId': provide.subCategoryId,
