@@ -15,7 +15,7 @@ class DetailsPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton( //返回按钮
           icon: Icon(Icons.arrow_back),
-          onPressed: (){ Navigator.pop(context); },
+          onPressed: (){ Navigator.of(context).pop(); },
         ),
         title: Text("商品详情"),
       ),

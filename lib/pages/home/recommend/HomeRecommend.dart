@@ -36,7 +36,7 @@ class HomeRecommend extends StatelessWidget {
   }
 
   //商品单独项组件, index商品数据的下标
-  Widget _productItem(index){
+  Widget _productItem(index, context){
     return InkWell(
       child: Container(
         height: ScreenUtil().setHeight(210),
@@ -57,7 +57,9 @@ class HomeRecommend extends StatelessWidget {
           ],
         ),
       ),
-      onTap: (){},
+      onTap: (){
+        Navigator.pushNamed(context, "/details", arguments: {'productId': "${recommendDataList[index]['productId']}"});
+      },
     );
   }
 
@@ -69,7 +71,7 @@ class HomeRecommend extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: recommendDataList.length,
         itemBuilder: (context, index){
-          return _productItem(index);
+          return _productItem(index, context);
         },
       ),
     );

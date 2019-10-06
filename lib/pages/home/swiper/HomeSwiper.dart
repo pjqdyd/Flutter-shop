@@ -17,7 +17,12 @@ class HomeSwiper extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemBuilder: (BuildContext context, int index){
-          return Image.network("${swiperDataList[index]['image']}", fit: BoxFit.fill,);
+          return InkWell(
+            child: Image.network("${swiperDataList[index]['image']}", fit: BoxFit.fill,),
+            onTap: (){ //点击跳转到详情页
+              Navigator.pushNamed(context, "/details", arguments: {'productId': "${swiperDataList[index]['productId']}"});
+            },
+          );
         },
         itemCount: swiperDataList.length,
         pagination: SwiperPagination(),

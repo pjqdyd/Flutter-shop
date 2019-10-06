@@ -14,15 +14,15 @@ class HomeFloorContent extends StatelessWidget {
       padding: EdgeInsets.all(4),
       child: Column(
         children: <Widget>[
-          _firstRow(),
-          _otherRow()
+          _firstRow(context),
+          _otherRow(context)
         ],
       ),
     );
   }
 
   //单个商品组件
-  Widget _productItem(Map product){
+  Widget _productItem(Map product, BuildContext context){
     return InkWell(
       child: Container(
         width: ScreenUtil().setWidth(361),
@@ -34,22 +34,24 @@ class HomeFloorContent extends StatelessWidget {
         ),
         //child: Image.network(product['image'], fit: BoxFit.cover,),
       ),
-      onTap: (){},
+      onTap: (){
+        Navigator.pushNamed(context, "/details", arguments: {'productId': "${product['productId']}"});
+      },
     );
   }
 
   //第一行商品组
-  Widget _firstRow(){
+  Widget _firstRow(context){
     return Row(
       children: <Widget>[
         Container(
           height: ScreenUtil().setHeight(506),
-          child: _productItem(floorProductDataList[0]),
+          child: _productItem(floorProductDataList[0], context),
         ),
         Column(
           children: <Widget>[
-            _productItem(floorProductDataList[1]),
-            _productItem(floorProductDataList[2]),
+            _productItem(floorProductDataList[1], context),
+            _productItem(floorProductDataList[2], context),
           ],
         )
       ],
@@ -57,25 +59,25 @@ class HomeFloorContent extends StatelessWidget {
   }
 
   //下面其他商品组
-  Widget _otherRow(){
+  Widget _otherRow(context){
     return Wrap( //流布局
       //spacing: 2, //子组件主轴方向的间距
       //alignment: WrapAlignment.center, //主轴上的对齐方式
       //runSpacing: 2, //纵轴的间距
       //runAlignment: WrapAlignment.end, //纵轴的对齐方式
       direction: Axis.horizontal, //水平排列
-      children: _getOtherList(),
+      children: _getOtherList(context),
     );
   }
 
   //定义返回其他商品组的方法
-  List<Widget> _getOtherList(){
+  List<Widget> _getOtherList(context){
 
     List<Widget> otherList = new List();
     int length = floorProductDataList.length;
     //从第3个商品开始, 就是其他商品
     for(int i = 3; i < length; i++){
-      otherList.add(_productItem(floorProductDataList[i]));
+      otherList.add(_productItem(floorProductDataList[i], context));
     }
     return otherList;
   }
