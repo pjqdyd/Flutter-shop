@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provide/provide.dart';
+
+import '../../provider/ProductDetailProd.dart';
 
 //商品详情页
 class DetailsPage extends StatelessWidget {
@@ -8,8 +11,14 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _getTest(context);
     return Container(
       child: Text(arguments['productId']),
     );
+  }
+
+  void _getTest(BuildContext context) async{
+    await Provide.value<ProductDetailProd>(context).getProductDetailInfo(arguments['productId']);
+    print("ok");
   }
 }

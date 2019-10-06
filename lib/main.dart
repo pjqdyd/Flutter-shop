@@ -3,13 +3,15 @@ import 'routes/Routes.dart';
 import 'package:provide/provide.dart';    //provide状态管理
 import './provider/SubCategoryProd.dart'; //引入子分类数据状态提供部件
 import './provider/ProductListProd.dart'; //引入商品列表数据状态部件
+import './provider/ProductDetailProd.dart'; //引入商品详情数据状态部件
 
 void main(){
   var providers = Providers();
 
   providers
   ..provide(Provider<SubCategoryProd>.value(SubCategoryProd()))
-  ..provide(Provider<ProductListProd>.value(ProductListProd()));
+  ..provide(Provider<ProductListProd>.value(ProductListProd()))
+  ..provide(Provider<ProductDetailProd>.value(ProductDetailProd()));
   runApp(ProviderNode(child: MyApp(), providers: providers,));
 }
 

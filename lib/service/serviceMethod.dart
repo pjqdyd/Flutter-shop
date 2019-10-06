@@ -52,3 +52,9 @@ Future getCategoryPageProducts({params="{}"}) async{
   return await sendPostRequest(servicePath['categoryPageProducts'], params: params);
 }
 
+//获取商详情的方法
+Future getProductDetailInfo({params="{}"}) async{
+  print('开始获取商品详情数据..');
+  return await sendPostRequest(servicePath['productPageDetail'], params: params);
+}
+
