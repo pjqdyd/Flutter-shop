@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';   //上拉加载下拉刷新插件
 import 'package:flutter_easyrefresh/material_header.dart'; //下拉刷新头部
 import 'package:flutter_easyrefresh/bezier_bounce_footer.dart'; //上拉加载底部
@@ -35,13 +36,10 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
   Map arguments; //路由跳转参数map集合
   _HomePageState({this.arguments}); //接收构造参数并赋值
 
-  @override
-  bool get wantKeepAlive => true;
+  final AsyncMemoizer _memoizer = AsyncMemoizer(); //记忆器对象
 
   @override
-  void initState() { 
-    super.initState();
-  }
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +49,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
            title: Text("Cool店"),
          ),
          body: FutureBuilder( //异步渲染组件
-           future: HttpMethod.getHomePageContent(), //调用异步方法(初始首页数据)
+           future: _getHomeContent(), //调用异步方法(初始首页数据)
            builder: (context, snapshot){
              if(snapshot.hasData){
                //var resData = json.decode(snapshot.data.toString()); //不用转换,默认json格式
@@ -94,6 +92,13 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
          )
        ),
     );
+  }
+
+  //定义获取首页内容的方法
+  Future _getHomeContent() async{
+    return _memoizer.runOnce(() async { //运行一次, 返回缓存的Future, 避免重绘
+      return await HttpMethod.getHomePageContent();
+    });
   }
 
   //定义获取热门商品数据的方法
