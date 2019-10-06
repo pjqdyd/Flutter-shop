@@ -6,6 +6,7 @@ import '../service/serviceMethod.dart' as HttpMethod;
 //商品详情页状态管理
 class ProductDetailProd with ChangeNotifier{
 
+  //商品详情数据
   ProductDetailModel productDetailModel = null;
 
   //从后台获取商品数据
