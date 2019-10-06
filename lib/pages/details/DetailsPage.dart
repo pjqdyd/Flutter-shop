@@ -11,14 +11,36 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _getTest(context);
-    return Container(
-      child: Text(arguments['productId']),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton( //返回按钮
+          icon: Icon(Icons.arrow_back),
+          onPressed: (){ Navigator.pop(context); },
+        ),
+        title: Text("商品详情"),
+      ),
+      body: FutureBuilder(
+        future: _getProductDetail(context),
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            return Container(
+              child: Column(
+                children: <Widget>[
+
+                ],
+              ),
+            );
+          }else{
+            return Text("加载中..");
+          }
+        },
+      ),
     );
   }
 
-  void _getTest(BuildContext context) async{
+  //异步获取商品详情的方法
+  Future _getProductDetail(BuildContext context) async{
     await Provide.value<ProductDetailProd>(context).getProductDetailInfo(arguments['productId']);
-    print("ok");
+    return ""; //因为是通过状态管理来渲染数据, 所以这里无需返回
   }
 }
