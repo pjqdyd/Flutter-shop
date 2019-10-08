@@ -21,7 +21,8 @@ class DetailHeader extends StatelessWidget {
                 children: <Widget>[
                   _productImage(productDetail.image1),   //商品图片
                   _productName(productDetail.pruductName), //商品名称
-                  _productNum(productDetail.pruductISerialNumber) //商品编号
+                  _productNum(productDetail.pruductISerialNumber), //商品编号
+                  _productPrice(productDetail.presentPrice, productDetail.oriPrice),
                 ],
               ),
             );
@@ -65,6 +66,34 @@ class DetailHeader extends StatelessWidget {
         style: TextStyle(
           color: Colors.black26,
         ),
+      ),
+    );
+  }
+
+  //返回商品价格组件
+  Widget _productPrice(double newPrince, double oldPrice){
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(left: 15),
+      width: ScreenUtil().setWidth(750),
+      child: Row(
+        children: <Widget>[
+           Text(
+            "¥ ${newPrince}",
+            style: TextStyle(
+              color: Color(0xFF8C7BFD),
+              fontSize: ScreenUtil().setSp(35),
+            ),
+          ),
+          SizedBox(width: 20,),
+          Text(
+            '￥ ${oldPrice}',
+            style: TextStyle(
+              color: Colors.black26,
+              decoration: TextDecoration.lineThrough,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -4,6 +4,8 @@ import 'package:provide/provide.dart';
 import '../../provider/ProductDetailProd.dart';
 
 import './detail_header/DetailHeader.dart';   //商品详情头部
+import './detail_explain/DetailExplain.dart'; //商品解释组件
+
 
 //商品详情页
 class DetailsPage extends StatelessWidget {
@@ -29,6 +31,7 @@ class DetailsPage extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   DetailHeader(),  //商品详情头部组件
+                  DetailExplain(), //商品详情解释信息组件
                 ],
               ),
             );
