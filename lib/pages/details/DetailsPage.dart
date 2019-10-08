@@ -3,6 +3,8 @@ import 'package:provide/provide.dart';
 
 import '../../provider/ProductDetailProd.dart';
 
+import './detail_header/DetailHeader.dart';   //商品详情头部
+
 //商品详情页
 class DetailsPage extends StatelessWidget {
 
@@ -26,7 +28,7 @@ class DetailsPage extends StatelessWidget {
             return Container(
               child: Column(
                 children: <Widget>[
-
+                  DetailHeader(),  //商品详情头部组件
                 ],
               ),
             );
