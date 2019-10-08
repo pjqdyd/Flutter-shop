@@ -67,6 +67,8 @@ class DetailTabbar extends StatelessWidget {
 
   //商品评论组件
   Widget _productComments(){
-    return Text("2");
+    return Center(
+      child: Text("评论暂无数据"),
+    );
   }
 }
