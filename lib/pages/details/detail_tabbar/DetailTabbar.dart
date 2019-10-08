@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 
@@ -38,7 +39,7 @@ class DetailTabbar extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  _productInfo(),    //商品详情
+                  _productInfo(productData.pruductDetail),    //商品详情
                   _productComments(),//商品评论
                 ],
               ),
@@ -52,8 +53,16 @@ class DetailTabbar extends StatelessWidget {
 
 
   //商品详情组件
-  Widget _productInfo(){
-    return Text("1");
+  Widget _productInfo(String productDetailHtml){
+    return Container(
+      child: ListView(
+        children: <Widget>[
+          Html(
+            data: productDetailHtml,
+          ),
+        ],
+      ),
+    );
   }
 
   //商品评论组件
