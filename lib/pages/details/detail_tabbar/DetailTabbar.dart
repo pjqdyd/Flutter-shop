@@ -36,8 +36,8 @@ class DetailTabbar extends StatelessWidget {
             Expanded(
               child: TabBarView(
                 children: <Widget>[
-                  Text("1"),
-                  Text("2")
+                  _productInfo(),    //商品详情
+                  _productComments(),//商品评论
                 ],
               ),
             ),
@@ -46,5 +46,16 @@ class DetailTabbar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+  //商品详情组件
+  Widget _productInfo(){
+    return Text("1");
+  }
+
+  //商品评论组件
+  Widget _productComments(){
+    return Text("2");
   }
 }
