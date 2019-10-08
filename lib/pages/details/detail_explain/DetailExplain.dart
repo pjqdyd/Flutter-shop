@@ -13,20 +13,20 @@ class DetailExplain extends StatelessWidget {
       margin: EdgeInsets.only(top: 10),
       padding: EdgeInsets.only(left: 15),
       width: ScreenUtil().setWidth(750),
+      height: ScreenUtil().setHeight(60),
+      alignment: Alignment.centerLeft,
       child: _productTips(),
     );
   }
 
-  //返回商品价格组件
+  //返回商品提示组件
   Widget _productTips(){
-    return Container(
-      child: Text(
+    return Text(
         "说明: > 精品保证 > 及时送达",
         style: TextStyle(
           color: Color(0xFF8C7BFD),
           fontSize: ScreenUtil().setSp(30),
         ),
-      ),
     );
   }
 }

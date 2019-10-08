@@ -87,7 +87,7 @@ class DetailHeader extends StatelessWidget {
           ),
           SizedBox(width: 20,),
           Text(
-            '￥ ${oldPrice}',
+            '市场价: ￥${oldPrice}',
             style: TextStyle(
               color: Colors.black26,
               decoration: TextDecoration.lineThrough,
