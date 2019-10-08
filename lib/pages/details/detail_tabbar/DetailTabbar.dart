@@ -10,6 +10,8 @@ class DetailTabbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //从状态管理中获取数据
+    var productData = Provide.value<ProductDetailProd>(context).productDatailModel;
     return Container(
       width: ScreenUtil().setWidth(750),
       height: ScreenUtil().setHeight(1180),
