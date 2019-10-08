@@ -7,13 +7,13 @@ import '../service/serviceMethod.dart' as HttpMethod;
 class ProductDetailProd with ChangeNotifier{
 
   //商品详情数据
-  ProductDetailModel productDatailModel = null;
+  ProductDetailModel productDetailModel = null;
 
   //从后台获取商品数据
   void getProductDetailInfo(String productId) async {
     await HttpMethod.getProductDetailInfo(params: {'productId': productId}).then((resData){
       //将json数据还原成model对象
-      this.productDatailModel = ProductDetailModel.fromJson(resData['data']);
+      this.productDetailModel = ProductDetailModel.fromJson(resData['data']);
       notifyListeners();
     });
   }

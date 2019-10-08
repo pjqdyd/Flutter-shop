@@ -13,7 +13,7 @@ class DetailHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provide<ProductDetailProd>( //从状态管理中获取数据
       builder: (context, child, productDetailProd){
-        var productDetail = Provide.value<ProductDetailProd>(context).productDatailModel;
+        var productDetail = Provide.value<ProductDetailProd>(context).productDetailModel;
         if(productDetail != null){
             return Container(
               color: Colors.white,
