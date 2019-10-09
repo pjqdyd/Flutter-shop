@@ -37,7 +37,9 @@ class DetailHeader extends StatelessWidget {
   Widget _productImage(String imageUrl){
     return Image.network(
       imageUrl,
-      width: ScreenUtil().setWidth(740),
+      fit: BoxFit.cover,
+      width: ScreenUtil().setWidth(750),
+      height: ScreenUtil().setHeight(800),
     );
   }
 
@@ -45,7 +47,7 @@ class DetailHeader extends StatelessWidget {
   Widget _productName(String name){
     return Container(
       width: ScreenUtil().setWidth(740),
-      padding: EdgeInsets.only(left: 15),
+      padding: EdgeInsets.only(left: 15, top: 10),
       child: Text(
         name,
         style: TextStyle(
