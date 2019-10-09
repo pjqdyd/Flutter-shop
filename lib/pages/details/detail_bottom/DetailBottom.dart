@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 import '../../../provider/CartProd.dart';
 import '../../../provider/ProductDetailProd.dart';
@@ -61,7 +63,15 @@ class DetailBottom extends StatelessWidget {
                 1, 
                 productInfo.presentPrice, 
                 productInfo.image1);
-
+              //显示提示
+              Fluttertoast.showToast(
+                msg: "添加成功",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );
             },
           ),
 
@@ -82,6 +92,15 @@ class DetailBottom extends StatelessWidget {
               //TODO
               //清空购物车
               await Provide.value<CartProd>(context).removeCartData();
+              //显示提示
+              Fluttertoast.showToast(
+                msg: "清空购物车成功",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
+                textColor: Colors.white,
+                fontSize: 16.0,
+              );
             },
           ),
 
