@@ -61,7 +61,7 @@ class DetailBottom extends StatelessWidget {
                 1, 
                 productInfo.presentPrice, 
                 productInfo.image1);
-                
+
             },
           ),
 
@@ -78,7 +78,11 @@ class DetailBottom extends StatelessWidget {
                 ),
               )
             ),
-            onTap: (){},
+            onTap: () async {
+              //TODO
+              //清空购物车
+              await Provide.value<CartProd>(context).removeCartData();
+            },
           ),
 
 
