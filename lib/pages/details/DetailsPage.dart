@@ -7,6 +7,8 @@ import '../../provider/ProductDetailProd.dart';
 import './detail_header/DetailHeader.dart';   //商品详情头部
 import './detail_explain/DetailExplain.dart'; //商品解释组件
 import './detail_tabbar/DetailTabbar.dart';   //商品页选项卡组件
+import './detail_bottom/DetailBottom.dart';   //商品页底部按钮
+
 
 
 //商品详情页
@@ -29,15 +31,27 @@ class DetailsPage extends StatelessWidget {
         future: _getProductDetail(context),
         builder: (context, snapshot){
           if(snapshot.hasData){
-            return Container(
-              width: ScreenUtil().setWidth(750),
-              child: ListView(
-                children: <Widget>[
-                  DetailHeader(),  //商品详情头部组件
-                  DetailExplain(), //商品详情解释信息组件
-                  DetailTabbar(),  //商品页选项卡组件
-                ],
-              ),
+            return Stack( //层叠组件
+              children: <Widget>[
+
+                Container( //商品信息
+                  width: ScreenUtil().setWidth(750),
+                  child: ListView(
+                    children: <Widget>[
+                      DetailHeader(),  //商品详情头部组件
+                      DetailExplain(), //商品详情解释信息组件
+                      DetailTabbar(),  //商品页选项卡组件
+                    ],
+                  ),
+                ),
+
+                Positioned( //定位组件, 底部按钮
+                  bottom: 0,
+                  left: 0,
+                  child: DetailBottom(),
+                ),
+
+              ],
             );
           }else{
             return Text("加载中..");
