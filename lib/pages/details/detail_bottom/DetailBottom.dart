@@ -63,15 +63,15 @@ class DetailBottom extends StatelessWidget {
                 1, 
                 productInfo.presentPrice, 
                 productInfo.image1);
-              //显示提示
-              Fluttertoast.showToast(
-                msg: "添加成功",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
-                backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
-                textColor: Colors.white,
-                fontSize: 16.0,
-              );
+                //显示提示
+                Fluttertoast.showToast(
+                  msg: "添加成功",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  backgroundColor: Color.fromRGBO(104, 87, 229, 0.8),
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
             },
           ),
 
