@@ -4,6 +4,7 @@ import 'package:provide/provide.dart';    //provide状态管理
 import './provider/SubCategoryProd.dart'; //引入子分类数据状态提供部件
 import './provider/ProductListProd.dart'; //引入商品列表数据状态部件
 import './provider/ProductDetailProd.dart'; //引入商品详情数据状态部件
+import './provider/CartProd.dart';          //引入购物车数据状态布局
 
 void main(){
   var providers = Providers();
@@ -11,7 +12,8 @@ void main(){
   providers
   ..provide(Provider<SubCategoryProd>.value(SubCategoryProd()))
   ..provide(Provider<ProductListProd>.value(ProductListProd()))
-  ..provide(Provider<ProductDetailProd>.value(ProductDetailProd()));
+  ..provide(Provider<ProductDetailProd>.value(ProductDetailProd()))
+  ..provide(Provider<CartProd>.value(CartProd()));
   runApp(ProviderNode(child: MyApp(), providers: providers,));
 }
 

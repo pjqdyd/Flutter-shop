@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+//购物车页面
+class CartPage extends StatefulWidget {
+  Map arguments;
+  CartPage({this.arguments});
 
-class CartPage extends StatelessWidget {
+  _CartPageState createState() => _CartPageState(arguments: this.arguments);
+}
 
-  final arguments;
-
-  CartPage({this.arguments}); //构造器,接收参数对象
+class _CartPageState extends State<CartPage> {
+  Map arguments; //路由接收的参数
+  _CartPageState({this.arguments});
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-      body: Center(
-        child: Text("")
-      ),
+    return Container(
+       child: null,
     );
   }
+
 }

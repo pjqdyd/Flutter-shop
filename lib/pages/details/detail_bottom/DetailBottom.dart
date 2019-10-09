@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provide/provide.dart';
+
+import '../../../provider/CartProd.dart';
+import '../../../provider/ProductDetailProd.dart';
 
 //详情页底部按钮组件
 class DetailBottom extends StatelessWidget {
@@ -7,6 +11,10 @@ class DetailBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //获取商品数据
+    var productInfo = Provide.value<ProductDetailProd>(context).productDetailModel;
+
     return Container(
       width: ScreenUtil().setWidth(750),
       height: ScreenUtil().setHeight(100),
@@ -45,7 +53,16 @@ class DetailBottom extends StatelessWidget {
                 ),
               )
             ),
-            onTap: (){},
+            onTap: () async {
+              //保存商品信息到购物车的状态管理
+              await Provide.value<CartProd>(context).saveCartData(
+                productInfo.pruductId, 
+                productInfo.pruductName, 
+                1, 
+                productInfo.presentPrice, 
+                productInfo.image1);
+                
+            },
           ),
 
            InkWell( //立即购买按钮
