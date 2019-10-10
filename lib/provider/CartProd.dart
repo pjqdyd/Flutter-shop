@@ -11,6 +11,8 @@ class CartProd with ChangeNotifier{
 
   String cartDataListStr = "[]";         //字符串的购物车集合(方便存储的)
   List<CartDataModel> cartDataList = []; //List购物车集合(方便ui展示的)
+  double allPrice = 0;                       //选中商品总价格
+  int allProductCount = 0;                   //所有选中商品的数量
 
   /**
    * 持久保存购物车数据的方法(真实情况要查询一次后端数据库)
@@ -95,15 +97,21 @@ class CartProd with ChangeNotifier{
   }
 
   /** 
-   * 获取本地持久化的数据, 添加到cartDataList中
+   * 获取本地持久化的数据, 添加到cartDataList中, 并初始总价格和商品数量
   */
   void getCartData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     cartDataListStr = prefs.getString('cartInfo');
     cartDataList = [];
+    allPrice = 0;
+    allProductCount = 0;
     if(cartDataListStr != null){
       List<Map> tempList = (json.decode(cartDataListStr.toString()) as List).cast();
       tempList.forEach((item){
+        if(item['isCheck']){ //如果是选中的商品
+          allPrice += (item['count']*item['price']); //总价等于数量*价格
+          allProductCount += item['count'];          //总商品数量
+        }
         cartDataList.add(CartDataModel.fromJson(item));
       });
     }
