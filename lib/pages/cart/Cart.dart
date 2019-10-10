@@ -4,7 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provide/provide.dart';
 
 import '../../provider/CartProd.dart';
-import './cart_item/CartItem.dart';    //购物车单个商品组件
+import './cart_item/CartItem.dart';     //购物车单个商品组件
+import './cart_bottom/CartBottom.dart'; //购物车底部栏组件
+
 
 
 //购物车页面
@@ -23,11 +25,21 @@ class CartPage extends StatelessWidget {
         builder: (context, snapshot){
           if(snapshot.hasData){
             List<CartDataModel> cartDataList = Provide.value<CartProd>(context).cartDataList;
-            return ListView.builder(
-              itemCount: cartDataList.length,
-              itemBuilder: (context, index){
-                return CartItem(cartDataModel: cartDataList[index]); //购物车单个商品组件
-              },
+            return Stack(
+              children: <Widget>[
+                ListView.builder( //商品列表
+                  itemCount: cartDataList.length,
+                  itemBuilder: (context, index){
+                    return CartItem(cartDataModel: cartDataList[index]); //购物车单个商品组件
+                  },
+                ),
+
+                Positioned(  //底部栏
+                  bottom: 0,
+                  left: 0,
+                  child: CartBottom(),
+                ),
+              ],
             );
           }else{
             return Text("正在加载");
