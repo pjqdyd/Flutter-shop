@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shop/model/CartDataModel.dart';
 
+import '../cart_count/CartCount.dart';  //商品计数组件
+
 //购物车商品列表单个item组件
 class CartItem extends StatelessWidget {
 
@@ -58,15 +60,17 @@ class CartItem extends StatelessWidget {
     );
   }
 
-  //商品名称
+  //商品名称, 数量
   Widget _productName(CartDataModel cartItem){
     return Container(
       width: ScreenUtil().setWidth(300),
       padding: EdgeInsets.all(10),
       alignment: Alignment.topLeft,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(cartItem.productName),
+          CartCount(),
         ],
       ),
     );
@@ -76,8 +80,10 @@ class CartItem extends StatelessWidget {
   Widget _productPrice(CartDataModel cartItem){
     return Container(
       width: ScreenUtil().setWidth(150),
+      height: ScreenUtil().setHeight(150),
       alignment: Alignment.centerRight,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Text('¥${cartItem.price}'),
           Container(
