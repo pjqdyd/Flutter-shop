@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shop/model/CartDataModel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provide/provide.dart';
 
 import '../../provider/CartProd.dart';
+import '../../model/CartDataModel.dart';
+
 import './cart_item/CartItem.dart';     //购物车单个商品组件
 import './cart_bottom/CartBottom.dart'; //购物车底部栏组件
 
@@ -27,10 +28,16 @@ class CartPage extends StatelessWidget {
             List<CartDataModel> cartDataList = Provide.value<CartProd>(context).cartDataList;
             return Stack(
               children: <Widget>[
-                ListView.builder( //商品列表
-                  itemCount: cartDataList.length,
-                  itemBuilder: (context, index){
-                    return CartItem(cartDataModel: cartDataList[index]); //购物车单个商品组件
+
+                Provide<CartProd>(
+                  builder: (context, child, cartProd){
+                    cartDataList = cartProd.cartDataList; //重新获取一下商品列表数据
+                    return ListView.builder( //购物车商品列表
+                      itemCount: cartDataList.length,
+                      itemBuilder: (context, index){
+                        return CartItem(cartDataModel: cartDataList[index],);
+                      },
+                    );
                   },
                 ),
 

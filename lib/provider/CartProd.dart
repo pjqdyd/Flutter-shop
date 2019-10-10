@@ -43,7 +43,8 @@ class CartProd with ChangeNotifier{
         'productName': productName,
         'count': count,
         'price': price,
-        'image': image 
+        'image': image,
+        'isCheck': true
       };
       tempList.add(newProduct);
       cartDataList.add(CartDataModel.fromJson(newProduct));
@@ -55,6 +56,30 @@ class CartProd with ChangeNotifier{
     prefs.setString('cartInfo', cartDataListStr);
 
     notifyListeners();
+  }
+
+  /**
+   * 删除单个商品的方法
+   */
+  void deleteOneCartProduct(String productId) async {
+    //获取持久化对象
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    cartDataListStr = prefs.getString('cartInfo'); //获取购物车商品列表字符串集合
+    //转换成集合
+    List<Map> tempList = (json.decode(cartDataListStr.toString()) as List).cast();
+    int tempIndex = 0;
+    int deleteIndex = 0;
+    tempList.forEach((item){
+      if(item['productId'] == productId){
+        deleteIndex = tempIndex;
+      }
+      tempIndex++;
+    });
+    tempList.removeAt(deleteIndex); //删除这个商品
+    cartDataListStr = json.encode(tempList).toString(); //重新保存到本地
+    prefs.setString('cartInfo', cartDataListStr);
+
+    await getCartData(); //重新更新下ui的数据
   }
 
   /**

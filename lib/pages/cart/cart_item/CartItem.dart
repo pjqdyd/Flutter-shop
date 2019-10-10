@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_shop/model/CartDataModel.dart';
+import 'package:provide/provide.dart';
+
+import '../../../model/CartDataModel.dart';
+import '../../../provider/CartProd.dart';
 
 import '../cart_count/CartCount.dart';  //商品计数组件
 
@@ -25,20 +28,20 @@ class CartItem extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          _cartCheckBt(),
+          _cartCheckBt(cartDataModel, context),
           _productImage(cartDataModel),
           _productName(cartDataModel),
-          _productPrice(cartDataModel),
+          _productPrice(cartDataModel, context),
         ],
       ),
     );
   }
 
-  //多选按钮
-  Widget _cartCheckBt(){
+  //选框按钮
+  Widget _cartCheckBt(CartDataModel cartItem, BuildContext context){
     return Container(
       child: Checkbox(
-        value: true,
+        value: cartItem.isCheck,
         activeColor: Color(0xFF8C7BFD),
         onChanged: (bool val){
 
@@ -77,7 +80,7 @@ class CartItem extends StatelessWidget {
   }
 
   //商品价格
-  Widget _productPrice(CartDataModel cartItem){
+  Widget _productPrice(CartDataModel cartItem, BuildContext context){
     return Container(
       width: ScreenUtil().setWidth(150),
       height: ScreenUtil().setHeight(150),
@@ -93,7 +96,10 @@ class CartItem extends StatelessWidget {
                 color: Colors.black26,
                 size: 30,
               ),
-              onTap: (){},
+              onTap: (){
+                //删除单个商品
+                Provide.value<CartProd>(context).deleteOneCartProduct(cartItem.productId);
+              },
             ),
           ),
         ],

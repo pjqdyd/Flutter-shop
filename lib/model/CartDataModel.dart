@@ -1,13 +1,15 @@
 //购物车商品数据模型
+
 class CartDataModel {
   String productId;
   String productName;
   int count;
   double price;
   String image;
+  bool isCheck; //是否选中
 
   CartDataModel(
-      {this.productId, this.productName, this.count, this.price, this.image});
+      {this.productId, this.productName, this.count, this.price, this.image, this.isCheck});
 
   CartDataModel.fromJson(Map<String, dynamic> json) {
     productId = json['productId'];
@@ -15,6 +17,7 @@ class CartDataModel {
     count = json['count'];
     price = double.parse(json['price'].toString());
     image = json['image'];
+    isCheck = json['isCheck'];
   }
 
   Map<String, dynamic> toJson() {
@@ -24,6 +27,7 @@ class CartDataModel {
     data['count'] = this.count;
     data['price'] = this.price;
     data['image'] = this.image;
+    data['isCheck'] = this.isCheck;
     return data;
   }
 }
