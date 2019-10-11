@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import './member_header/MemberHeader.dart'; //会员页头部组件
+import './member_order_title/MemberOrderTitle.dart'; //会员页我的订单标题组件
+
 
 class MemberPage extends StatelessWidget {
 
@@ -17,6 +19,7 @@ class MemberPage extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           MemberHeader(),
+          MemberOrderTitle(),
         ],
       ),
     );
