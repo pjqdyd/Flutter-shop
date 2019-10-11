@@ -118,5 +118,28 @@ class CartProd with ChangeNotifier{
     notifyListeners();
   }
 
+  /**
+   * 改变选中商品状态的方法
+   */
+  void setCheckState(CartDataModel cartItem) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    cartDataListStr = prefs.getString('cartInfo');
+    //先取出购物车商品列表数据
+    List<Map> tempList = (json.decode(cartDataListStr.toString()) as List).cast();
+    int tempIndex = 0;
+    int checkIndex = 0;
+    tempList.forEach((item){
+      if(item['productId']  == cartItem.productId){
+        checkIndex = tempIndex;  //记录要选中/取消选中的商品下标
+      }
+      tempIndex++;
+    });
+    tempList[checkIndex] = cartItem.toJson(); //赋值改变商品的选中状态
+    cartDataListStr = json.encode(tempList).toString();
+    prefs.setString('cartInfo', cartDataListStr); //再重新持久化
+
+    await getCartData(); //重新获取数据
+  }
+
 
 }
