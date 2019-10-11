@@ -166,5 +166,31 @@ class CartProd with ChangeNotifier{
 
   }
 
+  /**
+   * 商品数量的加减
+   */
+  void addOrReduceProductCount(CartDataModel cartItem, String addOrReduce) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    cartDataListStr = prefs.getString('cartInfo');
+    //先取出购物车商品列表数据
+    List<Map> tempList = (json.decode(cartDataListStr.toString()) as List).cast();
+    int tempIndex = 0;
+    int changeIndex = 0; //要改变商品数量的下标
+    tempList.forEach((item){
+      if(item['productId'] == cartItem.productId){
+        changeIndex = tempIndex;
+      }
+      tempIndex++;
+    });
+    if(addOrReduce == 'add'){
+      cartItem.count++;
+    }else if(cartItem.count > 1 && addOrReduce == 'reduce'){
+      cartItem.count--;
+    }else{return;}
+    tempList[changeIndex] = cartItem.toJson();
+    cartDataListStr = json.encode(tempList).toString();
+    prefs.setString('cartInfo', cartDataListStr); //重新持久化
+    await getCartData();    //重新获取数据
+  }
 
 }

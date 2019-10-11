@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provide/provide.dart';
+
+import '../../../provider/CartProd.dart';
+import '../../../model/CartDataModel.dart';
+
 
 //购物车商品数量组件
 class CartCount extends StatelessWidget {
-  const CartCount({Key key}) : super(key: key);
+  CartDataModel cartDataModel;
+  CartCount(this.cartDataModel);
 
   @override
   Widget build(BuildContext context) {
@@ -15,33 +21,35 @@ class CartCount extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          _reduceBtn(),
-          _countNumArea(),
-          _addBtn(),
+          _reduceBtn(context),
+          _countNumArea(context),
+          _addBtn(context),
         ],
       ),
     );
   }
 
   //减少按钮
-  Widget _reduceBtn(){
+  Widget _reduceBtn(BuildContext context){
     return InkWell(
       child: Container(
         width: ScreenUtil().setWidth(45),
         height: ScreenUtil().setWidth(45),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: cartDataModel.count > 1 ? Colors.white : Colors.black12,
           border: Border(right: BorderSide(width: 1, color: Colors.black12,),),
         ),
-        child: Text("-"),
+        child: cartDataModel.count > 1 ? Text("-") : Text(" "),
       ),
-      onTap: (){},
+      onTap: (){
+        Provide.value<CartProd>(context).addOrReduceProductCount(cartDataModel, 'reduce');
+      },
     );
   }
 
   //加号按钮
-  Widget _addBtn(){
+  Widget _addBtn(BuildContext context){
     return InkWell(
       child: Container(
         width: ScreenUtil().setWidth(45),
@@ -53,18 +61,20 @@ class CartCount extends StatelessWidget {
         ),
         child: Text("+"),
       ),
-      onTap: (){},
+      onTap: (){
+        Provide.value<CartProd>(context).addOrReduceProductCount(cartDataModel, 'add');
+      },
     );
   }
 
   //中间数字显示组件
-  Widget _countNumArea(){
+  Widget _countNumArea(BuildContext context){
     return Container(
       width: ScreenUtil().setWidth(70),
       height: ScreenUtil().setHeight(45),
       alignment: Alignment.center,
       color: Colors.white,
-      child: Text("1"),
+      child: Text("${cartDataModel.count}"),
     );
   }
 

@@ -75,7 +75,7 @@ class CartItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(cartItem.productName),
-          CartCount(),
+          CartCount(cartItem),
         ],
       ),
     );
