@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "data": {
+    "name": "首页热门商品数据",
+    "page": 1,
+    "size": 4,
+    "total": 200,
+    "hotProductDataList": [{
+      "id": 1001,
+      "name": "冷光科技数字钟",
+      "newPrice": 203.3,
+      "oldPrice": 300.5,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-ae4ba20dd8a9488e.jpg"
+    },{
+      "id": 1002,
+      "name": "动感流光数据线",
+      "newPrice": 102.3,
+      "oldPrice": 230.5,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-a27cf608f3b728ec.jpg"
+    },{
+      "id": 1003,
+      "name": "磁悬浮地球仪",
+      "newPrice": 423.6,
+      "oldPrice": 500.5,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-7ae16f0911638d4b.jpg"
+    },{
+      "id": 1004,
+      "name": "智能穿戴设备",
+      "newPrice": 303.3,
+      "oldPrice": 400.5,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-1c3072c9afc432b2.jpg"
+    }]
+  }
+  
+}

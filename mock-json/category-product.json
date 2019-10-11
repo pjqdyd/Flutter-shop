@@ -1,0 +1,41 @@
+{
+  "code": "200",
+  "message": "cool店分类页商品数据",
+  "data": [
+        {
+            "image": "https://upload-images.jianshu.io/upload_images/14511997-7ae16f0911638d4b.jpg",
+            "oriPrice": 35.5,
+            "presentPrice": 1.8,
+            "goodsName": "科技炫光地球仪 k72型号",
+            "goodsId": "3194330cf25f43c3934dbb8c2a964ade"
+        },
+        {
+            "image": "https://upload-images.jianshu.io/upload_images/14511997-ae4ba20dd8a9488e.jpg",
+            "oriPrice": 34.0,
+            "presentPrice": 33.8,
+            "goodsName": "冷光电子钟 摆饰钟 M5",
+            "goodsId": "522a3511f4c545ab9547db074bb51579"
+        },
+        {
+            "image": "https://upload-images.jianshu.io/upload_images/14511997-a27cf608f3b728ec.jpg",
+            "oriPrice": 1.98,
+            "presentPrice": 1.8,
+            "goodsName": "动感流光数据线 无限动感",
+            "goodsId": "bbdbd5028cc849c2998ff84fb55cb934"
+        },
+        {
+            "image": "https://upload-images.jianshu.io/upload_images/14511997-83625f5c2f491b18.jpg",
+            "oriPrice": 23.5,
+            "presentPrice": 1.9,
+            "goodsName": "智能穿戴设备 IWatchx",
+            "goodsId": "87013c4315e54927a97e51d0645ece76"
+        },
+        {
+            "image": "https://upload-images.jianshu.io/upload_images/14511997-1c3072c9afc432b2.jpg",
+            "oriPrice": 2.5,
+            "presentPrice": 2.2,
+            "goodsName": "智能手表 运动检测 Y5",
+            "goodsId": "86388a0ee7bd4a9dbe79f4a38c8acc89"
+        }
+    ]
+}

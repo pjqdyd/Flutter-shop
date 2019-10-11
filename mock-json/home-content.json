@@ -1,0 +1,85 @@
+{
+  "code": 201,
+  "msg": "成功",
+  "data": {
+    "name": "Cool店测试数据",
+
+    "swiperList": [{
+      "productId": 1,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-d0aaa95dc3114f05.jpg"
+    }, {
+      "productId": 2,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-5acff62c2897baf6.jpg"
+    }, {
+      "productId": 3,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-98e742fda86f47e1.jpg"
+    }],
+
+    "navIconList": [{
+      "categoryName": "购物",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-a1455452c94d93de.png"
+    }, {
+      "categoryName": "礼品",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-4c55060bfcf171c0.png"
+    }, {
+      "categoryName": "推荐",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-e5b5bfaae8cffa74.png"
+    }, {
+      "categoryName": "爆款",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-77688a914fc1c497.png"
+    }, {
+      "categoryName": "抢购",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-d2a3445c6c8afc7b.png"
+    }, {
+      "categoryName": "新品",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-10c85695eb343fd1.png"
+    }, {
+      "categoryName": "拍卖",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-6cc3612a10e0be0f.png"
+    }, {
+      "categoryName": "潮流",
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-f3b5627f43749181.png"
+    }],
+
+    "adImageUrl": "https://upload-images.jianshu.io/upload_images/14511997-8366934c09aef54a.png",
+
+    "adJumpAddress": "https://github.com/pjqdyd/Flutter-shop",
+
+    "recommendList": [{
+      "productId": 001,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-06ea9fb25480168a.jpg",
+      "price": 538
+    }, {
+      "productId": 002,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-55736ad0ff028c1b.jpg",
+      "price": 1238
+    }, {
+      "productId": 003,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-55a1a5959c501da8.jpg",
+      "price": 2338
+    }, {
+      "productId": 004,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-d0aaa95dc3114f05.jpg",
+      "price": 3238
+    }],
+
+    "ftImageUrl": "https://upload-images.jianshu.io/upload_images/14511997-fc0ff73a0233ecb7.png",
+
+    "floorProductList": [{
+      "productId": 1,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-98e742fda86f47e1.jpg"
+    }, {
+      "productId": 2,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-5acff62c2897baf6.jpg"
+    }, {
+      "productId": 3,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-d0aaa95dc3114f05.jpg"
+    }, {
+      "productId": 4,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-55a1a5959c501da8.jpg"
+    }, {
+      "productId": 5,
+      "image": "https://upload-images.jianshu.io/upload_images/14511997-55736ad0ff028c1b.jpg"
+    }]
+  }
+}
