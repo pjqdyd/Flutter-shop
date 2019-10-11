@@ -39,7 +39,9 @@ class DetailBottom extends StatelessWidget {
                   color: Color(0xFF8C7BFD),
               ),
             ),
-            onTap: (){},
+            onTap: (){
+              Navigator.pushNamed(context, "/cart");
+            },
           ),
 
           InkWell( //加入购物车按钮
