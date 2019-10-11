@@ -36,7 +36,9 @@ class _CategoryProductsState extends State<CategoryProducts> {
                 itemBuilder: (context, index){
                   return InkWell(
                     child: _itemBox(productList[index]),
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.pushNamed(context, "/details", arguments: {'productId': "${productList[index].goodsId}"});
+                    },
                   );
                 },
               ),
