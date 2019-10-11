@@ -52,13 +52,13 @@ class CartBottom extends StatelessWidget {
   Widget _allPriceArea(BuildContext context){
     double allPrice = Provide.value<CartProd>(context).allPrice;
     return Container(
-      width: ScreenUtil().setWidth(410),
+      width: ScreenUtil().setWidth(400),
       child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
               Container(
-                width: ScreenUtil().setWidth(260),
+                width: ScreenUtil().setWidth(240),
                 alignment: Alignment.centerRight,
                 child: Text(
                   "合计:",
@@ -68,10 +68,10 @@ class CartBottom extends StatelessWidget {
                 ),
               ),
               Container(
-                width: ScreenUtil().setWidth(150),
+                width: ScreenUtil().setWidth(160),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "¥${allPrice}",
+                  "¥${allPrice.toStringAsFixed(2)}",
                   style: TextStyle(
                     fontSize: ScreenUtil().setSp(36),
                     color: Colors.red
@@ -82,7 +82,7 @@ class CartBottom extends StatelessWidget {
           ),
 
           Container(
-            width: ScreenUtil().setWidth(400),
+            width: ScreenUtil().setWidth(390),
             alignment: Alignment.centerRight,
             child: Text(
               '满50免减100,特价优惠',
@@ -101,7 +101,7 @@ class CartBottom extends StatelessWidget {
   Widget _goButton(BuildContext context){
     int allProductCount = Provide.value<CartProd>(context).allProductCount;
     return Container(
-      width: ScreenUtil().setWidth(160),
+      width: ScreenUtil().setWidth(180),
       padding: EdgeInsets.only(left: 10),
       child: InkWell(
         child: Container(
