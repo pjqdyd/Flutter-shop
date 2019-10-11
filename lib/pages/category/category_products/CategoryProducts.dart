@@ -55,7 +55,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
   //定义返回每个商品盒子的方法
   Widget _itemBox(ProductDataModel product){
     return ListTile(
-      leading: Image.network(product.image),
+      leading: Image.network(product.image, fit: BoxFit.cover,),
       title: Text(
         product.goodsName,
         style: TextStyle(fontSize: ScreenUtil().setSp(32),),
