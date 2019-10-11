@@ -58,6 +58,10 @@ flutter:
     - images/3.0x/icon/hot.png
     - images/icon/hot.png
 
+    - images/2.0x/bg/bg.jpg
+    - images/3.0x/bg/bg.jpg
+    - images/bg/bg.jpg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './member_header/MemberHeader.dart'; //会员页头部组件
+
 class MemberPage extends StatelessWidget {
 
   final arguments;
@@ -9,8 +11,13 @@ class MemberPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("会员"),
+      appBar: AppBar(
+        title: Text("会员中心"),
+      ),
+      body: ListView(
+        children: <Widget>[
+          MemberHeader(),
+        ],
       ),
     );
   }
