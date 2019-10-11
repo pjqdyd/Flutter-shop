@@ -29,19 +29,48 @@ class DetailBottom extends StatelessWidget {
       child: Row(
         children: <Widget>[
 
-          InkWell( //购物车图标
-            child: Container(
-              width: ScreenUtil().setWidth(110),
-              alignment: Alignment.center,
-              child: Icon(
-                  Icons.shopping_cart,
-                  size: 35,
-                  color: Color(0xFF8C7BFD),
+          Stack(
+            children: <Widget>[
+              InkWell( //购物车图标
+                child: Container(
+                  width: ScreenUtil().setWidth(110),
+                  alignment: Alignment.center,
+                  child: Icon(
+                      Icons.shopping_cart,
+                      size: 35,
+                      color: Color(0xFF8C7BFD),
+                  ),
+                ),
+                onTap: (){
+                  Navigator.pushNamed(context, "/cart");
+                },
               ),
-            ),
-            onTap: (){
-              Navigator.pushNamed(context, "/cart");
-            },
+
+              Provide<CartProd>( //图标上的购物车商品数红点气泡
+                builder: (context, child, cartProd){
+                  int cartProductCount = cartProd.allProductCount; //获取总购物车商品数
+                  return Positioned(
+                    top: 0,
+                    right: 5,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        border: Border.all(width: 2, color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        "${cartProductCount}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(22),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
 
           InkWell( //加入购物车按钮

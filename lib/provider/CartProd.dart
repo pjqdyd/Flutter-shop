@@ -29,12 +29,18 @@ class CartProd with ChangeNotifier{
 
     bool isExist = false; //是否重复
     int index = 0;        //索引
-    //遍历购物车集合, 检测是否有重复
+    allPrice = 0;
+    allProductCount = 0;
+    //遍历购物车集合,
     tempList.forEach((item){
-      if(item['productId'] == productId){
+      if(item['productId'] == productId){ //检测是否有重复
         tempList[index]['count'] = item['count'] + 1; //重复的商品数量加1
         cartDataList[index].count++;                  //重复的商品数量加1
         isExist = true;
+      }
+      if(item['isCheck']){ //是否选中
+        allPrice += (cartDataList[index].price * cartDataList[index].count);
+        allProductCount += cartDataList[index].count;
       }
       index++;
     });
@@ -49,6 +55,8 @@ class CartProd with ChangeNotifier{
         'image': image,
         'isCheck': true
       };
+      allPrice += (count * price);
+      allProductCount += count;
       tempList.add(newProduct);
       cartDataList.add(CartDataModel.fromJson(newProduct));
     }
@@ -93,6 +101,8 @@ class CartProd with ChangeNotifier{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('cartInfo');
     cartDataList = [];
+    allPrice = 0;
+    allProductCount = 0;
     print("清空完成---------------------");
     notifyListeners();
   }
