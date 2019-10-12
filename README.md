@@ -61,4 +61,9 @@ lib
    3. 连接好设备后, 在项目目录下运行`flutter run`即可.
 
    (参考: [flutter中文网](https://flutterchina.club/get-started/install/))
+
+
+#### 最后:
+
+   (一些Flutter Widget组件布局案例 [组件布局案例](https://github.com/pjqdyd/Flutter-demo/tree/master/Flutter%E7%BB%84%E4%BB%B6demo%E6%A1%88%E4%BE%8B))
    
