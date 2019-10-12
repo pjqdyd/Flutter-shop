@@ -1,7 +1,7 @@
 # _![app](https://upload-images.jianshu.io/upload_images/14511997-ac28a04d6978e0f2.png)_  Cool店 使用Flutter 开发的移动端电商APP应用.
 
 ### 简介:
->此项目是根据 [Flutter实战-移动电商](https://www.jspang.com/posts/2019/03/01/flutter-shop.html) 学习完成, app主题色ui更改了, 数据则使用了Mock数据;
+>此项目是根据 [Flutter实战-移动电商](https://www.jspang.com/posts/2019/03/01/flutter-shop.html) 学习完成, app主题色ui更改了, 图片来自网络, 图标图片来自iconfont, 数据则使用了在线Mock数据;
 
 ### 开发环境:
   > Flutter v1.7.8+hotfix.<br>
@@ -20,16 +20,21 @@ lib
 
 ```
 
-### 项目使用的插件:
-
- |:-------------------- |:--------------------:|:-------------------:|
- |        编译     |      √通过            |    √通过                                           
- |        运行     |      √通过            |    √通过                                      
- |    流畅性能     |      较流畅           |     一般                               
- |    登录功能     |  可用微信/QQ弹窗授权   |                          
- |    定位功能     |      支持             |    支持                                          
- |   功能完善性    |     较完善             |    不完善                 
-
+### 项目使用的依赖:
+| 名称\选项           |  描述                  | 版本          |
+| ---------          | :-----                | :---------:  |
+| [cupertino_icons](https://github.com/flutter/cupertino_icons)    | flutter的图标库      |^0.1.2  |
+| [dio](https://github.com/flutterchina/dio)                       | dart的http网络请求库 |^2.1.13 |
+| [flutter_swiper](https://github.com/best-flutter/flutter_swiper) | 滑动轮播图组件       | ^1.1.6 |
+| [flutter_screenutil](https://github.com/OpenFlutter/flutter_screenutil) |屏幕尺寸适配   | ^0.5.3 |
+| [url_launcher](https://github.com/flutter/plugins/tree/master/packages/url_launcher/url_launcher) |    跳转链接 | ^5.1.2 |
+| [flutter_easyrefresh](https://github.com/xuelongqy/flutter_easyrefresh) | 下拉刷新上拉加载组件|         ^2.0.4 |
+| [provide](https://github.com/google/flutter-provide) |          provide状态管理       | ^1.0.2 |
+| [fluttertoast](https://github.com/PonnamKarthik/FlutterToast)    |  提示toast通知组件 | ^3.1.3 |
+| [flutter_html](https://github.com/Sub6Resources/flutter_html)    |flutter渲染html页面 | ^0.11.0 |
+| [shared_preferences](https://github.com/flutter/plugins/tree/master/packages/shared_preferences) |数据持久化 | ^0.5.3 |
+| [fastmock](www.fastmock.site)                                     |   在线Mock数据             |        /        |
+| --------------------------------| ------------------------------ |   -------------------------  |
 
 
 
@@ -49,6 +54,11 @@ lib
 
 
 ### 如何运行:
-   1. 连接好设备后(安卓模拟器), 在项目目录下运行`flutter run`即可.
+   1. 确保安装好FlutterSdk开发环境,cmd查看命令`flutter doctor`.
+
+   2. 在项目根目录下运行`flutter pub get`下载依赖包.
+
+   3. 连接好设备后, 在项目目录下运行`flutter run`即可.
+
+   (参考: [flutter中文网](https://flutterchina.club/get-started/install/))
    
-   (目前项目初始化..)
