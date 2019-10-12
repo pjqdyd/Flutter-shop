@@ -1,7 +1,7 @@
 # _![app](https://upload-images.jianshu.io/upload_images/14511997-ac28a04d6978e0f2.png)_  Cool店 使用Flutter 开发的移动端电商APP应用.
 
 ### 简介:
->此项目是根据 [Flutter实战-移动电商](https://www.jspang.com/posts/2019/03/01/flutter-shop.html) 学习完成, app主题色ui更改了, 图片来自网络, 图标图片来自iconfont, 数据则使用了在线Mock数据;
+>此项目是根据 [Flutter实战-移动电商](https://www.jspang.com/posts/2019/03/01/flutter-shop.html) 完成, app主题色ui更改了, 图片来自网络, 图标图片来自iconfont, 数据则使用了fastmock在线Mock数据;
 
 ### 开发环境:
   > Flutter v1.7.8+hotfix.<br>
