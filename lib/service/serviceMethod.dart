@@ -12,7 +12,8 @@ import '../config/serviceUrl.dart';
  */
 Future sendPostRequest(url, {params="{}", name="默认"}) async{
   Dio dio = new Dio();
-  dio.options.contentType = ContentType.parse("application/x-www-form-urlencoded");
+  /// dio.options.contentType = ContentType.parse("application/x-www-form-urlencoded");
+  dio.options.contentType = Headers.formUrlEncodedContentType;
   try{
     Response response = await dio.post(url, data: params,);
     if(response.statusCode == 200){
